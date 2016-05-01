@@ -1,5 +1,6 @@
 from __future__ import division
 import sys
+import os
 import numpy as np
 from johnson import get_elementary_cycles
 
@@ -59,8 +60,12 @@ def revert(cycs, idx):
 
 
 def pipeOutput(cycs, filein):
-    fileout = filein.replace(".in", ".cyc")
-    fileout = 'results/' + fileout
+    parts = filein.split("/")
+    path = 'results/'
+    if not os.path.exists(path):
+        os.mkdir(path)
+    fname = parts[1].replace(".in", ".cyc")
+    fileout = path + fname
     print fileout
     fout = open(fileout, 'w+')
     for subgraph in cycs:
