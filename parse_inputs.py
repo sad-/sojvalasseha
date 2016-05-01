@@ -60,6 +60,7 @@ def revert(cycs, idx):
 
 def pipeOutput(cycs, filein):
     fileout = filein.replace(".in", ".cyc")
+    fileout = 'results/' + fileout
     print fileout
     fout = open(fileout, 'w+')
     for subgraph in cycs:
