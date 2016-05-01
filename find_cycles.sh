@@ -1,4 +1,7 @@
+rm commands
 touch commands
-(for i in `seq 1 492`; 
-do echo "python parse_inputs phase1_processed/${i}.in" >> commands; done)
+cd phase1-processed
+(for i in $(ls); 
+do echo "python parse_inputs.py phase1-processed/${i}" >> ../commands; done)
+cd ..
 perl submitter.pl commands
