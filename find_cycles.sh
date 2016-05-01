@@ -1,7 +1,9 @@
+DIR=$1
 rm commands
 touch commands
-cd phase1-processed
-(for i in $(ls); 
-do echo "python parse_inputs.py phase1-processed/${i}" >> ../commands; done)
-cd ..
+#OLD_DIR=$(pwd);
+#cd $DIR
+(for i in $(ls $DIR); 
+do echo "python2.7 parse_inputs.py $DIR/${i}" >> commands; done)
+#cd $OLD_DIR
 perl submitter.pl commands
