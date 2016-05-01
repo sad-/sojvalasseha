@@ -1,6 +1,6 @@
+from __future__ import division
 import sys
 import numpy as np
-import math
 from johnson import get_elementary_cycles
 
 def main(argv):
@@ -35,7 +35,10 @@ def breakDown(G, n_s=None):
     #G is the large graph
     #n_s is the number of subgraphs or partitions
     if n_s == None:
-        n_s = int(math.ceil(len(G)//20))
+        if len(G) > 200:
+            n_s = int(np.ceil(len(G)/10))
+        else:
+            n_s = int(np.ceil(len(G)/20))
     mat = np.array(G)
     indices = np.array_split(np.random.permutation(xrange(len(G))), n_s)
     Gs = [np.empty([len(indices[j]), len(indices[j])]) for j in xrange(n_s)]
