@@ -64,7 +64,7 @@ def pipeOutput(cycs, filein):
     path = 'results/'
     if not os.path.exists(path):
         os.mkdir(path)
-    fname = parts[1].replace(".in", ".cyc")
+    fname = parts[-1].replace(".in", ".cyc")
     fileout = path + fname
     print fileout
     fout = open(fileout, 'w+')
