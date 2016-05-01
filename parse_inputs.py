@@ -1,5 +1,6 @@
 import sys
 import numpy as np
+import math
 from johnson import get_elementary_cycles
 
 def main(argv):
@@ -7,10 +8,15 @@ def main(argv):
         print("Usage Error: python parse_inputs.py inputfile")
     else:
         G, children = parseInput(argv[0])
-        Gs, indices = breakDown(G)
-        G_adj = [adjacencyList(mat) for mat in Gs]
-        cycles = [get_elementary_cycles(G_in) for G_in in G_adj]
-        cycs = revert(cycles, indices)
+        if len(G) <= 40:
+            G_adj = adjacencyList(np.array(G))
+            cycles = get_elementary_cycles(G_adj)
+            cycs = [[cyc for cyc in cycles if len(cyc) <= 5]]
+        else:
+            Gs, indices = breakDown(G)
+            G_adj = [adjacencyList(mat) for mat in Gs]
+            cycles = [get_elementary_cycles(G_in) for G_in in G_adj]
+            cycs = revert(cycles, indices)
         pipeOutput(cycs, argv[0])
 
 
@@ -25,9 +31,11 @@ def parseInput(filename):
     G = [map(int, fin.readline().split()) for i in xrange(n_v)]
     return G, children
 
-def breakDown(G, n_s=10):
+def breakDown(G, n_s=None):
     #G is the large graph
     #n_s is the number of subgraphs or partitions
+    if n_s == None:
+        n_s = int(math.ceil(len(G)//20))
     mat = np.array(G)
     indices = np.array_split(np.random.permutation(xrange(len(G))), n_s)
     Gs = [np.empty([len(indices[j]), len(indices[j])]) for j in xrange(n_s)]
