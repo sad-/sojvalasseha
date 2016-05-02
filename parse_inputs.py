@@ -28,9 +28,9 @@ def parseInput(filename, child = False):
         return filename + " not found."
 
     n_v = int(fin.readline())
+    children = map(int, fin.readline().split())
     if child:
         return children
-    children = map(int, fin.readline().split())
     G = [map(int, fin.readline().split()) for i in xrange(n_v)]
 
 
