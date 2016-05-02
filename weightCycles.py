@@ -29,13 +29,22 @@ from parse_inputs import parseInput
       return [map(int, line.split() for line in open(fileName))] 
 
    def weightCyc(children, cycList):
-
+      weights = []
+      for i in range(len(cycList)):
+         curr = cycList[i]
+         w = 0
+         for el in curr:
+            if el in children:
+               w += 2
+            else:
+               w += 1
+         weights[i] = w
+      return weights
 
    def selectCyc(cycles, cycleWeight):
       """Need to select cycles 
       which do not share vertices 
       Independent set or SCC
-
       First approach: greedily add cycles 
       """
 
