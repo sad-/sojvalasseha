@@ -19,9 +19,9 @@ def main(argv):
       children = readIn(inFile)
       cycList = readCyc(cycFile)
       cycleWeights = weightCyc(children, cycList)
-      print min(cycleWeights)
-      print len(cycList)
-      print len(cycleWeights)
+      finalCycs = selectCyc(cycList, cycleWeights)
+      print len(finalCycs)
+      print finalCycs
 
 
 def readIn(fileName):
