@@ -42,8 +42,7 @@ def weightCyc(children, cycList):
          else:
             w += 1
       weights.append(w)
-   # numChildren = [sum(np.array([w in children for w in cyc])) for cyc in cycList]
-   # weights = [len(cyc) + numChildren[i] for i, cyc in enumerate(cycList)]
+   # weights = [len(cyc) + sum(np.array([w in children for w in cyc])) for cyc in cycList]
    return weights
 
 def selectCyc(cycles, cycleWeight):
