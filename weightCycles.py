@@ -17,14 +17,16 @@ def main(argv):
    else:
       inFile, cycFile = argv
       children = readIn(inFile)
-      print children
       cycList = readCyc(cycFile)
       cycleWeights = weightCyc(children, cycList)
+      print min(cycleWeights)
+      print len(cycList)
+      print len(cycleWeights)
 
 
 def readIn(fileName):
    """ Return children from original input file"""
-   children = parseInput(fileName, child = True)
+   return parseInput(fileName, child = True)
 
 def readCyc(fileName):
    return [map(int, line.split()) for line in open(fileName)] 
@@ -39,7 +41,9 @@ def weightCyc(children, cycList):
             w += 2
          else:
             w += 1
-      weights[i] = w
+      weights.append(w)
+   # numChildren = [sum(np.array([w in children for w in cyc])) for cyc in cycList]
+   # weights = [len(cyc) + numChildren[i] for i, cyc in enumerate(cycList)]
    return weights
 
 def selectCyc(cycles, cycleWeight):
