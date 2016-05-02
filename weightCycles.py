@@ -39,9 +39,19 @@ from parse_inputs import parseInput
       First approach: greedily add cycles 
       """
 
-
-      selectedVertices = set()
-
+  
       weights = np.array(cycleWeight)
-      sortedIndices = np.argsort()
+      sortedIndices = np.argsort(weights)
+
+      ind1 = sortedIndices[0]
+      selectedVertices = np.array(cycles[ind1])
+      i = 1
+      while i < len(cycles):
+         cycle = np.array(cycles[i])
+         sharedVertices = np.in1d(cycle, selectedVertices)
+
+         if not sharedVertices.any():
+            selectedVertices.append(cycle)
+         i += 1
+
 
