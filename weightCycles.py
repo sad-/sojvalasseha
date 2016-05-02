@@ -65,7 +65,7 @@ def selectCyc(cycles, cycleWeight):
       sharedVertices = np.in1d(cycle, selectedVertices)
 
       if not sharedVertices.any():
-         selectedVertices.append(cycle)
+         np.append(,selectedVertices, cycle)
          selectedCycIndices.append[i]
       i += 1
    return [cycles[index] for index in selectedCycIndices ]
