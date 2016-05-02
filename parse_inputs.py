@@ -21,15 +21,19 @@ def main(argv):
         pipeOutput(cycs, argv[0])
 
 
-def parseInput(filename):
+def parseInput(filename, child = False):
     try:
         fin = open(filename, "r")
     except FileNotFoundError:
         return filename + " not found."
 
     n_v = int(fin.readline())
+    if child:
+        return children
     children = map(int, fin.readline().split())
     G = [map(int, fin.readline().split()) for i in xrange(n_v)]
+
+
     return G, children
 
 def breakDown(G, n_s=None):
