@@ -32,8 +32,6 @@ def parseInput(filename, child = False):
     if child:
         return children
     G = [map(int, fin.readline().split()) for i in xrange(n_v)]
-
-
     return G, children
 
 def breakDown(G, n_s=None):
