@@ -43,4 +43,4 @@ from parse_inputs import parseInput
 
       weights = np.array(cycleWeight)
       sortedIndices = np.argsort()
-      
+
