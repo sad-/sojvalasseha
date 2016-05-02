@@ -1,3 +1,4 @@
+from __future__ import division
 import numpy as np
 import pdb
 import random
@@ -8,7 +9,6 @@ from sklearn import svm
 import os
 import sys
 import csv
-from __future__ import division
 from parse_inputs import parseInput
 
 def main(argv):
@@ -19,8 +19,7 @@ def main(argv):
       children = readIn(inFile)
       print children
       cycList = readCyc(cycFile)
-      print cycList
-      cycleWeights = weightCyc(cycList)
+      cycleWeights = weightCyc(children, cycList)
 
 
 def readIn(fileName):
@@ -28,7 +27,7 @@ def readIn(fileName):
    children = parseInput(fileName, child = True)
 
 def readCyc(fileName):
-   return [map(int, line.split() for line in open(fileName))] 
+   return [map(int, line.split()) for line in open(fileName)] 
 
 def weightCyc(children, cycList):
    weights = []
