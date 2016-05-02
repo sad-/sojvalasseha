@@ -47,20 +47,30 @@ from parse_inputs import parseInput
       Independent set or SCC
       First approach: greedily add cycles 
       """
-
   
       weights = np.array(cycleWeight)
       sortedIndices = np.argsort(weights)
 
       ind1 = sortedIndices[0]
       selectedVertices = np.array(cycles[ind1])
+      selectedCycIndices = [0]
       i = 1
+
       while i < len(cycles):
          cycle = np.array(cycles[i])
          sharedVertices = np.in1d(cycle, selectedVertices)
 
          if not sharedVertices.any():
             selectedVertices.append(cycle)
+            selectedCycIndices.append[i]
          i += 1
+      return [cycles[index] for index in selectedCycIndices ]
+
+
+   def pipeOut(cycles):
+      """ Write selected cycles to output file 
+      in following format: 
+      """
+
 
 
