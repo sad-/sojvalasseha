@@ -39,7 +39,7 @@ def breakDown(G, n_s=None):
     #n_s is the number of subgraphs or partitions
     if n_s == None:
         if len(G) >= 30:
-            n_s = int(np.ceil(len(G)/10))
+            n_s = int(np.ceil(len(G)/100))
         else:
             n_s = int(np.ceil(len(G)/20))
     mat = np.array(G)

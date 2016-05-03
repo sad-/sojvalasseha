@@ -22,6 +22,7 @@ def main(argv):
       finalCycs = selectCyc(cycList, cycleWeights)
       print len(finalCycs)
       print finalCycs
+      # pipeOut(finalCycs)
 
 
 def readIn(fileName):
