@@ -9,7 +9,8 @@ def main(argv):
         print("Usage Error: python parse_inputs.py inputfile")
     else:
         G, children = parseInput(argv[0])
-        if len(G) <= 20:
+        if len(G) <= 2000:
+            print 'here'
             G_adj = adjacencyList(np.array(G))
             cycles = get_elementary_cycles(G_adj)
             cycs = [[cyc for cyc in cycles if len(cyc) <= 5]]
@@ -39,7 +40,7 @@ def breakDown(G, n_s=None):
     #n_s is the number of subgraphs or partitions
     if n_s == None:
         if len(G) >= 30:
-            n_s = int(np.ceil(len(G)/100))
+            n_s = int(np.ceil(len(G)/90))
         else:
             n_s = int(np.ceil(len(G)/20))
     mat = np.array(G)
