@@ -39,8 +39,8 @@ def breakDown(G, n_s=None):
     #G is the large graph
     #n_s is the number of subgraphs or partitions
     if n_s == None:
-        if len(G) >= 240:
-            n_s = int(np.ceil(len(G)/80))
+        if len(G) >= 20:
+            n_s = int(np.ceil(len(G)/10))
         else:
             n_s = int(np.ceil(len(G)/20))
     mat = np.array(G)
@@ -86,6 +86,7 @@ def pipeOutput(cycs, filein, final=False):
             fout.write(line)
         return
     for subgraph in cycs:
+        line = ''
         for cyc in subgraph:
             for (i, vertex) in enumerate(cyc):
                 if i == len(cyc)-1:
