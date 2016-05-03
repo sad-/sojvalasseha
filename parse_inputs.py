@@ -10,6 +10,7 @@ def main(argv):
     else:
         G, children = parseInput(argv[0])
         if len(G) <= 20:
+            print 'here'
             G_adj = adjacencyList(np.array(G))
             cycles = get_elementary_cycles(G_adj)
             cycs = [[cyc for cyc in cycles if len(cyc) <= 5]]
@@ -38,8 +39,8 @@ def breakDown(G, n_s=None):
     #G is the large graph
     #n_s is the number of subgraphs or partitions
     if n_s == None:
-        if len(G) >= 30:
-            n_s = int(np.ceil(len(G)/100))
+        if len(G) >= 20:
+            n_s = int(np.ceil(len(G)/10))
         else:
             n_s = int(np.ceil(len(G)/20))
     mat = np.array(G)
@@ -75,8 +76,8 @@ def pipeOutput(cycs, filein, final=False):
     print fileout
     fout = open(fileout, 'w+')
     if final:
+        line = ''
         for cyc in cycs:
-            line = ''
             for (i, vertex) in enumerate(cyc):
                 if i == len(cyc)-1:
                     line += str(vertex) + '\n'
@@ -85,8 +86,8 @@ def pipeOutput(cycs, filein, final=False):
             fout.write(line)
         return
     for subgraph in cycs:
+        line = ''
         for cyc in subgraph:
-            line = ''
             for (i, vertex) in enumerate(cyc):
                 if i == len(cyc)-1:
                     line += str(vertex) + '\n'
