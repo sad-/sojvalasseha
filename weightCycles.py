@@ -10,6 +10,7 @@ import os
 import sys
 import csv
 from parse_inputs import parseInput
+from parse_inputs import pipeOutput
 
 def main(argv):
    if len(argv) != 2:
@@ -22,7 +23,7 @@ def main(argv):
       finalCycs = selectCyc(cycList, cycleWeights)
       print len(finalCycs)
       print finalCycs
-      # pipeOut(finalCycs)
+      pipeOutput(finalCycs, inFile, final=True)
 
 
 def readIn(fileName):

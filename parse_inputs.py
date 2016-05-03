@@ -61,15 +61,29 @@ def revert(cycs, idx):
     return [[[idx[j][cycs[j][k][i]] for i in xrange(len(cycs[j][k]))] for k in xrange(len(cycs[j])) if len(cycs[j][k]) <= 5] for j in xrange(len(cycs))]
 
 
-def pipeOutput(cycs, filein):
+def pipeOutput(cycs, filein, final=False):
     parts = filein.split("/")
     path = 'results/'
+    if final:
+        path = 'final/'
     if not os.path.exists(path):
         os.mkdir(path)
     fname = parts[-1].replace(".in", ".cyc")
+    if final:
+        fname = parts[-1].replace(".cyc", ".out")
     fileout = path + fname
     print fileout
     fout = open(fileout, 'w+')
+    if final:
+        for cyc in cycs:
+            line = ''
+            for (i, vertex) in enumerate(cyc):
+                if i == len(cyc)-1:
+                    line += str(vertex) + '\n'
+                else:
+                    line += str(vertex) + ' '
+            fout.write(line)
+        return
     for subgraph in cycs:
         for cyc in subgraph:
             line = ''
