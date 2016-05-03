@@ -1,0 +1,10 @@
+SOJVALASSEHA -- Final Report
+
+Sampling cycles in a given instance: since any instance could have an exponentially large number of simple cycles relative to the number of vertices, it isn’t feasible to search for all cycles, so instead we sample them by randomly partitioning the graph into multiple components and run Johnson’s algorithm on each one. By partitioning the graph, we break an arbitrary number of cycles between the partitions. 
+
+Approach to deciding which cycles result in a “good” kidney exchange: For each instance, we approximated the cycles in the given instance and assigned them all a weight based on how many adults/children they contain. We add 2 to the weight for each child, and 1 for each adult. Once we have this list, we greedily select cycles, choosing the cycles with the maximum weight first that do not conflict with other cycles to include in our solution to the exchange problem. For selecting cycles to include in the solution, we reformulated the given graph to an intersection graph, where a particular vertex represents a cycle and undirected edges are drawn between vertices that share patient-donor pairs. Instead of explicitly forming the graph, we just maintain a queue containing all cycles in order of weight and every time we dequeue, we check if it intersects with other vertices in the current solution. If so, throw it out, otherwise include it in the solution.
+
+Outside sources used: 
+http://www.dcs.gla.ac.uk/publications/PAPERS/9145/ke.pdf
+tarjan.py downloaded from http://www.logarithmic.net/pfh/blog/01208083168
+johnson.py downloaded from https://github.com/qpwo/python-simple-cycles/blob/master/johnson.py
