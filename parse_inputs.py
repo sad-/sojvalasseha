@@ -70,7 +70,7 @@ def pipeOutput(cycs, filein, final=False):
         os.mkdir(path)
     fname = parts[-1].replace(".in", ".cyc")
     if final:
-        fname = parts[-1].replace(".cyc", ".out")
+        fname = parts[-1].replace(".in", ".out")
     fileout = path + fname
     print fileout
     fout = open(fileout, 'w+')
