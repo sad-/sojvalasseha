@@ -10,6 +10,7 @@ import os
 import sys
 import csv
 from parse_inputs import parseInput
+from parse_inputs import pipeOutput
 
 def main(argv):
    if len(argv) != 2:
@@ -22,6 +23,7 @@ def main(argv):
       finalCycs = selectCyc(cycList, cycleWeights)
       print len(finalCycs)
       print finalCycs
+      pipeOutput(finalCycs, inFile, final=True)
 
 
 def readIn(fileName):
@@ -53,20 +55,19 @@ def selectCyc(cycles, cycleWeight):
    """
 
    weights = np.array(cycleWeight)
-   sortedIndices = np.argsort(weights)
-
+   sortedIndices = np.argsort(weights)[::-1]
    ind1 = sortedIndices[0]
    selectedVertices = np.array(cycles[ind1])
-   selectedCycIndices = [0]
+   selectedCycIndices = [ind1]
    i = 1
 
    while i < len(cycles):
-      cycle = np.array(cycles[i])
+      index = sortedIndices[i]
+      cycle = np.array(cycles[index])
       sharedVertices = np.in1d(cycle, selectedVertices)
-
       if not sharedVertices.any():
-         np.append(selectedVertices, cycle)
-         selectedCycIndices.append(i)
+         selectedVertices = np.append(selectedVertices, cycle)
+         selectedCycIndices.append(index)
       i += 1
    return [cycles[index] for index in selectedCycIndices ]
 
@@ -78,6 +79,8 @@ def pipeOut(cycles):
 
 
 if __name__ == '__main__':
+
+
     main(sys.argv[1:])
 
 
