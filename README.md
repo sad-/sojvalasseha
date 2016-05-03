@@ -1,5 +1,5 @@
 ## aka jagaban
 
-to run do $$\textit{sh find_cycles.sh}$$
+to run do *sh find_cycles.sh*
 
-then $$\textit{sh finalize.sh}$$
+then *sh finalize.sh*
