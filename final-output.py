@@ -3,12 +3,11 @@
 
 out = open('solutions.out', 'w')
 for i in range(1,493):
-	try: 
-		s = 'final/' + str(i) + '.out'
-		f = open(s, 'r')
-		curr = ''
-		for line in f:
-			curr += line[:-1] + '; '
-		out.write(curr + '\n')
-	except FileNotFoundError:
-		out.write('None\n')
+	s = 'final/' + str(i) + '.out'
+	f = open(s, 'r')
+	if not f:
+		continue
+	curr = ''
+	for line in f:
+		curr += line[:-1] + '; '
+	out.write(curr + '\n')
