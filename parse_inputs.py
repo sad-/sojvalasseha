@@ -76,8 +76,8 @@ def pipeOutput(cycs, filein, final=False):
     print fileout
     fout = open(fileout, 'w+')
     if final:
+        line = ''
         for cyc in cycs:
-            line = ''
             for (i, vertex) in enumerate(cyc):
                 if i == len(cyc)-1:
                     line += str(vertex) + '\n'
@@ -87,7 +87,6 @@ def pipeOutput(cycs, filein, final=False):
         return
     for subgraph in cycs:
         for cyc in subgraph:
-            line = ''
             for (i, vertex) in enumerate(cyc):
                 if i == len(cyc)-1:
                     line += str(vertex) + '\n'

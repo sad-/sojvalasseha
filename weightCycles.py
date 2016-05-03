@@ -53,7 +53,8 @@ def selectCyc(cycles, cycleWeight):
    Independent set or SCC
    First approach: greedily add cycles 
    """
-
+   if not cycles or not cycleWeight:
+      return []
    weights = np.array(cycleWeight)
    sortedIndices = np.argsort(weights)[::-1]
    ind1 = sortedIndices[0]
