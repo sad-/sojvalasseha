@@ -1,3 +1,5 @@
 ## aka jagaban
 
-to run do *sh find_cycles.sh*
+to run do $$\textsc{sh find_cycles.sh}$$
+
+then $$\textsc{sh finalize.sh}$$

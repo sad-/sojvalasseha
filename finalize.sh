@@ -16,5 +16,5 @@ do python weightCycles.py phase1-processed/7/${i}.in results/${i}.cyc; done)
 do python weightCycles.py phase1-processed/8/${i}.in results/${i}.cyc; done)
 (for i in `seq 401 450`;   
 do python weightCycles.py phase1-processed/9/${i}.in results/${i}.cyc; done)
-(for i in `seq 411 492`;   
-do python weightCycles.py phase1-processed/9/${i}.in results/${i}.cyc; done)
+(for i in `seq 451 492`;   
+do python weightCycles.py phase1-processed/10/${i}.in results/${i}.cyc; done)
